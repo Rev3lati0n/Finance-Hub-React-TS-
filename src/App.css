@@ -1,0 +1,382 @@
+/* ===========================
+   APP LAYOUT
+=========================== */
+
+.layout{
+  display:flex;
+  min-height:100vh;
+}
+
+.main-content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+.page-content{
+  flex:1;
+  padding:30px;
+  background:#f5f7fb;
+}
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-top:30px;
+}
+
+.dashboard-bottom{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+  margin-top:30px;
+}
+
+.dashboard-box{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+/* ==========================
+   SUMMARY CARDS
+========================== */
+
+.summary-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+
+  transition: .25s;
+}
+
+.summary-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 28px rgba(0,0,0,.12);
+}
+
+.summary-card h3 {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.summary-card h2 {
+  color: #1e3a8a;
+  font-size: 34px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page Background */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #2563eb, #1e3a8a, #0f172a);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ---------- LOGIN & SIGNUP ---------- */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.auth-card {
+  width: 420px;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+.logo {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: gray;
+  margin-bottom: 30px;
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.auth-card button:hover {
+  background: #1d4ed8;
+}
+
+.auth-card p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-card a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.card h3 {
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  color: #2563eb;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* ==========================
+   EXPENSES
+========================== */
+
+.expense-form{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:25px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.expense-form input,
+.expense-form select{
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:15px;
+}
+
+.expense-form button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.expense-table{
+  margin-top:30px;
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.expense-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.expense-table th {
+  background: #2563eb;
+  color: white;
+}
+
+.expense-table tr:hover {
+  background: #f5f8ff;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transition: transform .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  color: #2563eb;
+  font-size: 2rem;
+}
+
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin:30px 0;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.card h3{
+  color:#777;
+  margin-bottom:12px;
+}
+
+.card h2{
+  color:#2457ff;
+  font-size:34px;
+}
+
+.recent-section{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.expense-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+.expense-table th{
+  text-align:left;
+  border-bottom:2px solid #eee;
+  padding:12px;
+}
+
+.expense-table td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+.expense-table tr:hover{
+  background:#f7f9ff;
+}
+
+.chart-card{
+  margin-top:30px;
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+::selection {
+  background: #0080ff99;
+  color: #ffffff;
+}
