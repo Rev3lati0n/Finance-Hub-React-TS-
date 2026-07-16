@@ -17,7 +17,6 @@ export function IncomeProvider({
 }) {
   const [incomes, setIncomes] = useState<Income[]>(() => {
     const saved = localStorage.getItem("financehub-income");
-    alert("Loaded income: " + saved);
     return saved ? JSON.parse(saved) : [];
   });
 

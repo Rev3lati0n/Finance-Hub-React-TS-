@@ -5,6 +5,7 @@ import FinanceChart from "../components/FinanceChart";
 import BudgetEditor from "../components/BudgetEditor";
 import { useState } from "react";
 import { useIncome } from "../context/IncomeContext";
+import WelcomeCard from "../components/WelcomeCard";
 
 export default function Dashboard() {
   const { expenses } = useExpenses();
@@ -40,6 +41,9 @@ export default function Dashboard() {
 
   return (
     <Layout>
+      
+      <WelcomeCard />
+
       <h1>Dashboard</h1>
 
       <BudgetEditor
@@ -52,26 +56,31 @@ export default function Dashboard() {
       <SummaryCard
         title="Monthly Income"
         value={`$${totalIncome.toFixed(2)}`}
+        icon="💰"
       />
 
       <SummaryCard
         title="Total Expenses"
         value={`$${totalExpenses.toFixed(2)}`}
+        icon="💸"
       />
 
       <SummaryCard
         title="Savings"
         value={`$${savings.toFixed(2)}`}
+        icon="🏦"
       />
 
       <SummaryCard
         title="Remaining Budget"
         value={`$${remaining.toFixed(2)}`}
+        icon="🎯"
       />
 
       <SummaryCard
         title="Transactions"
         value={(expenses.length + incomes.length).toString()}
+        icon="📊"
       />
 
       </div>
@@ -79,7 +88,14 @@ export default function Dashboard() {
       <FinanceChart />
 
       <div className="recent-section">
-        <h2>Recent Expenses</h2>
+        <div className="section-header">
+          <h2>Expenses</h2>
+
+          <span>
+            {recentExpenses.length} transaction
+            {recentExpenses.length !== 1 ? "s" : ""}
+          </span>
+        </div>
 
         {recentExpenses.length === 0 ? (
           <p>No expenses yet.</p>

@@ -380,3 +380,404 @@ body {
   background: #0080ff99;
   color: #ffffff;
 }
+
+.saveBudgetBtn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.saveBudgetBtn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.3);
+}
+
+.saveBudgetBtn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================
+   BUDGET CARD
+========================== */
+
+.budget-card{
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+.budget-card h2{
+  margin-bottom:20px;
+  color:#111827;
+  font-size:28px;
+}
+
+.budget-input{
+  width:100%;
+  padding:16px;
+  border:1px solid #d1d5db;
+  border-radius:12px;
+  font-size:18px;
+  margin-bottom:20px;
+  transition:.2s;
+}
+
+.budget-input:focus{
+  outline:none;
+  border-color:#2563eb;
+  box-shadow:0 0 0 4px rgba(37,99,235,.15);
+}
+
+.saveBudgetBtn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.saveBudgetBtn:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+  box-shadow:0 12px 22px rgba(37,99,235,.3);
+}
+
+.saveBudgetBtn:active{
+  transform:scale(.98);
+}
+
+.recent-section{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.expense-table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.expense-table thead{
+  background:#2563eb;
+  color:white;
+}
+
+.expense-table th{
+  padding:18px;
+  text-align:left;
+  font-size:16px;
+}
+
+.expense-table td{
+  padding:18px;
+  border-bottom:1px solid #ececec;
+}
+
+.expense-table tbody tr{
+  transition:.2s;
+}
+
+.expense-table tbody tr:hover{
+  background:#f7f9ff;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.section-header h2{
+  font-size:30px;
+  color:#111827;
+}
+
+.section-header span{
+  color:#6b7280;
+  font-weight:600;
+}
+
+/* ==========================
+   BUDGET EDITOR
+========================== */
+
+.budget-card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  margin-bottom: 30px;
+}
+
+.budget-card h2 {
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.budget-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.budget-row input {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.budget-row button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.budget-row button:hover {
+  background: #1d4ed8;
+}
+
+.search-box {
+  width: 100%;
+  padding: 14px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.action-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.edit-btn {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #ef4444;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+.search-box {
+  width: 100%;
+  padding: 14px;
+  margin: 20px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.action-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #2563eb;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn {
+  background: #ef4444;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+.search-box {
+  width: 100%;
+  padding: 14px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.action-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background: #2563eb;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn {
+  background: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* ==========================
+   INCOME PAGE
+==========================*/
+
+.search-box{
+  width:100%;
+  padding:14px 18px;
+  margin-bottom:20px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+}
+
+.action-btn{
+  border:none;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.delete-btn{
+  background:#ef4444;
+  color:white;
+}
+
+.delete-btn:hover{
+  background:#dc2626;
+}
+
+.expense-form button{
+  min-height:52px;
+}
+
+.expense-form input,
+.expense-form select{
+  min-height:52px;
+}
+
+/* ==========================
+   MODERN SUMMARY CARDS
+==========================*/
+
+.summary-card{
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+  transition:.3s;
+
+  cursor:pointer;
+}
+
+.summary-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(37,99,235,.15);
+}
+
+.summary-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:18px;
+}
+
+.summary-header span{
+  color:#6b7280;
+  font-weight:600;
+  font-size:15px;
+}
+
+.summary-icon{
+  width:46px;
+  height:46px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border-radius:14px;
+
+  background:#eff6ff;
+
+  font-size:24px;
+}
+
+.summary-card h2{
+  font-size:34px;
+  color:#1e3a8a;
+}
+
+/* ==========================
+   CHART CARD
+==========================*/
+
+.chart-card{
+  background:white;
+
+  margin:30px 0;
+
+  padding:30px;
+
+  border-radius:20px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.chart-card h2{
+  margin-bottom:25px;
+  color:#111827;
+}
