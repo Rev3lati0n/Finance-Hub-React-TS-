@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-type Props = {
+type BudgetEditorProps = {
   budget: number;
   onSave: (value: number) => void;
 };
@@ -8,29 +8,28 @@ type Props = {
 export default function BudgetEditor({
   budget,
   onSave,
-}: Props) {
+}: BudgetEditorProps) {
   const [value, setValue] = useState(budget);
 
-  useEffect(() => {
-    setValue(budget);
-  }, [budget]);
+  function handleSave() {
+    onSave(value);
+  }
 
   return (
-    <div className="card">
-      <h3>Monthly Budget</h3>
+    <div className="budget-card">
+      <h2>Monthly Budget</h2>
 
-      <input
-        type="number"
-        value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
-      />
+      <div className="budget-row">
+        <input
+          type="number"
+          value={value}
+          onChange={(e) => setValue(Number(e.target.value))}
+        />
 
-      <button
-        onClick={() => onSave(value)}
-        style={{ marginTop: "12px" }}
-      >
-        Save Budget
-      </button>
+        <button onClick={handleSave}>
+          Save Budget
+        </button>
+      </div>
     </div>
   );
 }

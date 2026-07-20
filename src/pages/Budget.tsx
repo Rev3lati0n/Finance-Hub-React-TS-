@@ -1,14 +1,17 @@
-import Sidebar from "../components/Sidebar";
+import Layout from "../components/Layout";
 
 export default function Budget() {
-  return ( 
-    <div className="dashboard">
-      <Sidebar />
+  return (
+    <Layout>
+      <h1>📅 Budget Planner</h1>
 
-      <main className="main-content">
-        <h1>Budget Planner</h1>
-        <p>Set and manage your monthly budget.</p>
-      </main>
-    </div>
+      <div className="chart-card">
+        <h2>Monthly Budget</h2>
+
+        <p>
+          Set and manage your monthly budget here.
+        </p>
+      </div>
+    </Layout>
   );
 }

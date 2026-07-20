@@ -7,6 +7,7 @@ import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
 import { ExpenseProvider } from "./context/ExpenseContext";
 import { IncomeProvider } from "./context/IncomeContext";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -15,6 +16,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <ExpenseProvider>
           <IncomeProvider>
             <App />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 2500,
+            }}
+          />
           </IncomeProvider>
         </ExpenseProvider>
       </AuthProvider>

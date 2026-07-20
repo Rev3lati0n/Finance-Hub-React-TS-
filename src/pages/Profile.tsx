@@ -1,14 +1,17 @@
-import Sidebar from "../components/Sidebar";
+import Layout from "../components/Layout";
 
 export default function Profile() {
   return (
-    <div className="dashboard">
-      <Sidebar />
+    <Layout>
+      <h1>👤 Profile</h1>
 
-      <main className="main-content">
-        <h1>Profile</h1>
-        <p>This is the user's account.</p>
-      </main>
-    </div>
+      <div className="chart-card">
+        <h2>Your Profile</h2>
+
+        <p>
+          Manage your account information here.
+        </p>
+      </div>
+    </Layout>
   );
 }

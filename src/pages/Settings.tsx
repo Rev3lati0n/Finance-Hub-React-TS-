@@ -1,14 +1,17 @@
-import Sidebar from "../components/Sidebar";
+import Layout from "../components/Layout";
 
 export default function Settings() {
   return (
-    <div className="dashboard">
-      <Sidebar />
+    <Layout>
+      <h1>⚙ Settings</h1>
 
-      <main className="main-content">
-        <h1>Settings</h1>
-        <p>Manage your settings here.</p>
-      </main>
-    </div>
+      <div className="chart-card">
+        <h2>Application Settings</h2>
+
+        <p>
+          Customize Finance Hub to match your preferences.
+        </p>
+      </div>
+    </Layout>
   );
 }
