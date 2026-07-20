@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 type SummaryCardProps = {
   title: string;
-  value: string;
+  value: ReactNode;
   icon?: string;
 };
 
@@ -13,6 +15,7 @@ export default function SummaryCard({
     <div className="summary-card">
       <div className="summary-header">
         <span>{title}</span>
+
         <div className="summary-icon">
           {icon}
         </div>

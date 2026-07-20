@@ -9,7 +9,7 @@ import Expenses from "./pages/Expenses";
 import Income from "./pages/Income";
 import Budget from "./pages/Budget";
 import Invoices from "./pages/Invoices";
-import Reports from "./pages/Reports";
+import Reports from "./pages/Report";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 

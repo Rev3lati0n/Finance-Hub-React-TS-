@@ -17,9 +17,9 @@ export default function AnimatedNumber({
     <CountUp
       start={0}
       end={value}
-      duration={1.5}
-      decimals={decimals}
+      duration={1.8}
       separator=","
+      decimals={decimals}
       prefix={prefix}
       suffix={suffix}
     />

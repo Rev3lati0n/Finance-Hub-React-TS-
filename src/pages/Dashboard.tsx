@@ -10,6 +10,7 @@ import BudgetProgress from "../components/BudgetProgress";
 import DashboardHero from "../components/DashboardHero";
 import QuickActions from "../components/QuickActions";
 import QuickStats from "../components/QuickStats";
+import AnimatedNumber from "../components/AnimatedNumber";
 
 export default function Dashboard() {
   const { expenses } = useExpenses();
@@ -59,35 +60,60 @@ export default function Dashboard() {
 
       <div className="summary-grid">
 
-      <SummaryCard
-        title="Monthly Income"
-        value={`$${totalIncome.toFixed(2)}`}
-        icon="💰"
-      />
+        <SummaryCard
+          title="Monthly Income"
+          value={
+            <AnimatedNumber
+              value={totalIncome}
+              prefix="$"
+            />
+          }
+          icon="💰"
+        />
 
-      <SummaryCard
-        title="Total Expenses"
-        value={`$${totalExpenses.toFixed(2)}`}
-        icon="💸"
-      />
+        <SummaryCard
+          title="Total Expenses"
+          value={
+            <AnimatedNumber
+              value={totalExpenses}
+              prefix="$"
+            />
+          }
+          icon="💸"
+        />
 
-      <SummaryCard
-        title="Savings"
-        value={`$${savings.toFixed(2)}`}
-        icon="🏦"
-      />
+        <SummaryCard
+          title="Savings"
+          value={
+            <AnimatedNumber
+              value={savings}
+              prefix="$"
+            />
+          }
+          icon="🏦"
+        />
 
-      <SummaryCard
-        title="Remaining Budget"
-        value={`$${remaining.toFixed(2)}`}
-        icon="🎯"
-      />
+        <SummaryCard
+          title="Remaining Budget"
+          value={
+            <AnimatedNumber
+              value={remaining}
+              prefix="$"
+            />
+          }
+          icon="🎯"
+        />
 
-      <SummaryCard
-        title="Transactions"
-        value={(expenses.length + incomes.length).toString()}
-        icon="📊"
-      />
+        <SummaryCard
+          title="Transactions"
+          value={
+            <AnimatedNumber
+              value={expenses.length + incomes.length}
+              decimals={0}
+            />
+          }
+          icon="📊"
+        />
 
       </div>
 
