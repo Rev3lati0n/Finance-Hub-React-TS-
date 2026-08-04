@@ -1857,3 +1857,101 @@ body.dark-mode .expense-form button{
 body.dark-mode .expense-form button:hover{
   background:#1d4ed8 !important;
 }
+
+/* ==========================================
+   FINANCE HUB THEME SYSTEM
+========================================== */
+
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --danger: #ef4444;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --border: #334155;
+  --primary: #3b82f6;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background .3s ease, color .3s ease;
+}
+
+/* Cards */
+
+.chart-card,
+.card,
+.summary-card,
+.budget-card,
+.recent-section,
+.profile-card,
+.auth-card,
+.dashboard-box {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: .3s ease;
+}
+
+/* Text */
+
+h1,
+h2,
+h3,
+p,
+span,
+strong {
+  color: var(--text);
+}
+
+.subtitle,
+.section-header span {
+  color: var(--muted);
+}
+
+/* Inputs */
+
+input,
+select,
+textarea {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Tables */
+
+.expense-table td {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.expense-table tr:hover {
+  background: rgba(37,99,235,.08);
+}
+
+/* Sidebar / Layout */
+
+.page-content,
+.main-content {
+  background: var(--bg);
+}
+
+/* Hover shadows */
+
+.card:hover,
+.summary-card:hover,
+.chart-card:hover {
+  box-shadow: 0 15px 35px rgba(37,99,235,.18);
+  transform: translateY(-4px);
+}

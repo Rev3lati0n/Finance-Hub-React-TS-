@@ -3,42 +3,65 @@ import {
   useContext,
   useEffect,
   useState,
+  type ReactNode,
 } from "react";
-import type { ReactNode } from "react";
 
 interface SettingsContextType {
-  notifications: boolean;
-  setNotifications: (value: boolean) => void;
-
   darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
+  toggleDarkMode: () => void;
+
+  notifications: boolean;
+  toggleNotifications: () => void;
+
+  currency: string;
+  setCurrency: (currency: string) => void;
 }
 
-const SettingsContext =
-  createContext<SettingsContextType | undefined>(
-    undefined
-  );
+const SettingsContext = createContext<
+  SettingsContextType | undefined
+>(undefined);
 
 export function SettingsProvider({
   children,
 }: {
   children: ReactNode;
 }) {
+  const [darkMode, setDarkMode] = useState(
+    () =>
+      JSON.parse(
+        localStorage.getItem("financehub-darkmode") ??
+          "false"
+      )
+  );
+
   const [notifications, setNotifications] =
-    useState(() => {
-      const saved = localStorage.getItem(
-        "financehub-notifications"
-      );
+    useState(
+      () =>
+        JSON.parse(
+          localStorage.getItem(
+            "financehub-notifications"
+          ) ?? "true"
+        )
+    );
 
-      return saved ? JSON.parse(saved) : true;
-    });
+  const [currency, setCurrencyState] = useState(
+    () =>
+      localStorage.getItem(
+        "financehub-currency"
+      ) ?? "USD"
+  );
 
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved =
-      localStorage.getItem("financehub-darkmode");
+  useEffect(() => {
+    document.body.classList.toggle(
+      "dark-mode",
+      darkMode
+    );
 
-    return saved ? JSON.parse(saved) : false;
-  });
+    localStorage.setItem(
+      "financehub-darkmode",
+      JSON.stringify(darkMode)
+    );
+  }, [darkMode]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -49,24 +72,27 @@ export function SettingsProvider({
 
   useEffect(() => {
     localStorage.setItem(
-      "financehub-darkmode",
-      JSON.stringify(darkMode)
+      "financehub-currency",
+      currency
     );
-
-    if (darkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [darkMode]);
+  }, [currency]);
 
   return (
     <SettingsContext.Provider
       value={{
-        notifications,
-        setNotifications,
         darkMode,
-        setDarkMode,
+
+        toggleDarkMode: () =>
+          setDarkMode((v: boolean) => !v),
+
+        notifications,
+
+        toggleNotifications: () =>
+          setNotifications((v: boolean) => !v),
+
+        currency,
+
+        setCurrency: setCurrencyState,
       }}
     >
       {children}
@@ -77,11 +103,10 @@ export function SettingsProvider({
 export function useSettings() {
   const context = useContext(SettingsContext);
 
-  if (!context) {
+  if (!context)
     throw new Error(
-      "useSettings must be used inside SettingsProvider"
+      "useSettings must be used inside SettingsProvider."
     );
-  }
 
   return context;
 }
