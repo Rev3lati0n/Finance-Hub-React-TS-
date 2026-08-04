@@ -1,8 +1,8 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Layout from "../components/Layout";
 import { useExpenses } from "../context/ExpenseContext";
 import type { Expense } from "../types/Expense";
-import Layout from "../components/Layout";
 
 export default function Expenses() {
   const {
@@ -41,7 +41,6 @@ export default function Expenses() {
     });
 
     toast.success("Expense added!");
-
     clearForm();
   }
 
@@ -64,7 +63,6 @@ export default function Expenses() {
     updateExpense(updatedExpense);
 
     toast.success("Expense updated!");
-
     clearForm();
   }
 
@@ -81,14 +79,15 @@ export default function Expenses() {
   }
 
   function handleDelete(id: string) {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this expense?"
-    );
-
-    if (!confirmed) return;
+    if (
+      !window.confirm(
+        "Are you sure you want to delete this expense?"
+      )
+    ) {
+      return;
+    }
 
     deleteExpense(id);
-
     toast.success("Expense deleted!");
   }
 
@@ -110,28 +109,23 @@ export default function Expenses() {
       />
 
       <div className="expense-form">
+
         <input
           placeholder="Description"
           value={description}
-          onChange={(e) =>
-            setDescription(e.target.value)
-          }
+          onChange={(e) => setDescription(e.target.value)}
         />
 
         <input
           type="number"
           placeholder="Amount"
           value={amount}
-          onChange={(e) =>
-            setAmount(e.target.value)
-          }
+          onChange={(e) => setAmount(e.target.value)}
         />
 
         <select
           value={category}
-          onChange={(e) =>
-            setCategory(e.target.value)
-          }
+          onChange={(e) => setCategory(e.target.value)}
         >
           <option>Food</option>
           <option>Transportation</option>
@@ -147,13 +141,14 @@ export default function Expenses() {
         {editingId ? (
           <>
             <button
+              className="primary-btn"
               onClick={handleUpdateExpense}
             >
               💾 Save Changes
             </button>
 
             <button
-              className="action-btn"
+              className="edit-btn"
               onClick={clearForm}
             >
               Cancel
@@ -161,21 +156,26 @@ export default function Expenses() {
           </>
         ) : (
           <button
+            className="primary-btn"
             onClick={handleAddExpense}
           >
             ➕ Add Expense
           </button>
         )}
+
       </div>
 
       <div className="expense-table">
+
         <h2>Expenses</h2>
 
         {filteredExpenses.length === 0 ? (
           <p>No expenses found.</p>
         ) : (
           <table>
+
             <thead>
+
               <tr>
                 <th>Description</th>
                 <th>Category</th>
@@ -184,61 +184,54 @@ export default function Expenses() {
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
+
             </thead>
 
             <tbody>
-              {filteredExpenses.map(
-                (expense) => (
-                  <tr key={expense.id}>
-                    <td>
-                      {expense.description}
-                    </td>
 
-                    <td>
-                      {expense.category}
-                    </td>
+              {filteredExpenses.map((expense) => (
 
-                    <td>
-                      $
-                      {expense.amount.toFixed(
-                        2
-                      )}
-                    </td>
+                <tr key={expense.id}>
 
-                    <td>{expense.date}</td>
+                  <td>{expense.description}</td>
 
-                    <td>
-                      <button
-                        className="action-btn edit-btn"
-                        onClick={() =>
-                          startEditing(
-                            expense
-                          )
-                        }
-                      >
-                        ✏️ Edit
-                      </button>
-                    </td>
+                  <td>{expense.category}</td>
 
-                    <td>
-                      <button
-                        className="action-btn delete-btn"
-                        onClick={() =>
-                          handleDelete(
-                            expense.id
-                          )
-                        }
-                      >
-                        🗑 Delete
-                      </button>
-                    </td>
-                  </tr>
-                )
-              )}
+                  <td>${expense.amount.toFixed(2)}</td>
+
+                  <td>{expense.date}</td>
+
+                  <td>
+                    <button
+                      className="action-btn edit-btn"
+                      onClick={() => startEditing(expense)}
+                    >
+                      ✏️ Edit
+                    </button>
+                  </td>
+
+                  <td>
+                    <button
+                      className="action-btn delete-btn"
+                      onClick={() =>
+                        handleDelete(expense.id)
+                      }
+                    >
+                      🗑 Delete
+                    </button>
+                  </td>
+
+                </tr>
+
+              ))}
+
             </tbody>
+
           </table>
         )}
+
       </div>
+
     </Layout>
   );
 }

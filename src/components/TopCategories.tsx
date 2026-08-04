@@ -24,14 +24,16 @@ export default function TopCategories() {
       ) : (
         sorted.map(([category, amount]) => (
           <div
-            className="category-row"
             key={category}
+            className="category-row"
           >
-            <span>{category}</span>
+            <span className="category-name">
+              {category}
+            </span>
 
-            <strong>
+            <span className="category-amount">
               ${amount.toFixed(2)}
-            </strong>
+            </span>
           </div>
         ))
       )}

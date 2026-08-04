@@ -1,30 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App.tsx";
+import { Toaster } from "react-hot-toast";
+
+import App from "./App";
+
 import "./index.css";
 import "./App.css";
+
 import { AuthProvider } from "./context/AuthContext";
 import { ExpenseProvider } from "./context/ExpenseContext";
 import { IncomeProvider } from "./context/IncomeContext";
-import { Toaster } from "react-hot-toast";
+import { SettingsProvider } from "./context/SettingsContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <ExpenseProvider>
-          <IncomeProvider>
-            <App />
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 2500,
-            }}
-          />
-          </IncomeProvider>
-        </ExpenseProvider>
-      </AuthProvider>
+      <SettingsProvider>
+        <AuthProvider>
+          <ExpenseProvider>
+            <IncomeProvider>
+              <App />
+
+              <Toaster
+                position="top-right"
+                toastOptions={{
+                  duration: 2500,
+                }}
+              />
+            </IncomeProvider>
+          </ExpenseProvider>
+        </AuthProvider>
+      </SettingsProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

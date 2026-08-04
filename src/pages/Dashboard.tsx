@@ -10,20 +10,18 @@ import BudgetProgress from "../components/BudgetProgress";
 import DashboardHero from "../components/DashboardHero";
 import QuickActions from "../components/QuickActions";
 import QuickStats from "../components/QuickStats";
-import AnimatedNumber from "../components/AnimatedNumber";
 
 export default function Dashboard() {
   const { expenses } = useExpenses();
+  const { incomes } = useIncome();
 
   const totalExpenses = expenses.reduce(
     (sum, expense) => sum + Number(expense.amount),
     0
   );
 
-  const { incomes } = useIncome();
-
   const totalIncome = incomes.reduce(
-    (sum, item) => sum + item.amount,
+    (sum, income) => sum + Number(income.amount),
     0
   );
 
@@ -46,7 +44,6 @@ export default function Dashboard() {
 
   return (
     <Layout>
-
       <DashboardHero />
 
       <QuickActions />
@@ -62,78 +59,49 @@ export default function Dashboard() {
 
         <SummaryCard
           title="Monthly Income"
-          value={
-            <AnimatedNumber
-              value={totalIncome}
-              prefix="$"
-            />
-          }
+          value={`$${totalIncome.toFixed(2)}`}
           icon="💰"
         />
 
         <SummaryCard
           title="Total Expenses"
-          value={
-            <AnimatedNumber
-              value={totalExpenses}
-              prefix="$"
-            />
-          }
+          value={`$${totalExpenses.toFixed(2)}`}
           icon="💸"
         />
 
         <SummaryCard
           title="Savings"
-          value={
-            <AnimatedNumber
-              value={savings}
-              prefix="$"
-            />
-          }
+          value={`$${savings.toFixed(2)}`}
           icon="🏦"
         />
 
         <SummaryCard
           title="Remaining Budget"
-          value={
-            <AnimatedNumber
-              value={remaining}
-              prefix="$"
-            />
-          }
+          value={`$${remaining.toFixed(2)}`}
           icon="🎯"
         />
 
         <SummaryCard
           title="Transactions"
-          value={
-            <AnimatedNumber
-              value={expenses.length + incomes.length}
-              decimals={0}
-            />
-          }
+          value={(expenses.length + incomes.length).toString()}
           icon="📊"
         />
 
       </div>
 
       <div className="dashboard-two-column">
-
         <FinanceChart />
 
         <BudgetProgress
           budget={monthlyBudget}
           spent={totalExpenses}
         />
-
       </div>
 
       <div className="dashboard-two-column">
-
         <FinancialInsights />
 
         <QuickStats />
-
       </div>
 
       <div className="recent-section">
@@ -165,7 +133,7 @@ export default function Dashboard() {
                   <td>{expense.description}</td>
                   <td>{expense.category}</td>
                   <td>{expense.date}</td>
-                  <td>${expense.amount}</td>
+                  <td>${expense.amount.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

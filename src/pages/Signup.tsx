@@ -1,101 +1,146 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
+
   const navigate = useNavigate();
-  const { login } = useAuth();
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
 
-  const handleSignup = (e: React.FormEvent) => {
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [confirmPassword, setConfirmPassword] =
+    useState("");
+
+  const [error, setError] = useState("");
+
+  function handleSignup(
+    e: React.FormEvent
+  ) {
     e.preventDefault();
 
+    if (
+      !username ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      setError("Please complete every field.");
+      return;
+    }
+
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError("Passwords do not match.");
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const users = JSON.parse(
+      localStorage.getItem("users") || "[]"
+    );
 
-    if (users.some((u: any) => u.email === email)) {
-      setError('Email already exists.');
+    const exists = users.find(
+      (u: any) => u.email === email
+    );
+
+    if (exists) {
+      setError("Email already exists.");
       return;
     }
 
-    const newUser = {
+    users.push({
       username,
       email,
       password,
-    };
-
-    users.push(newUser);
-
-    localStorage.setItem('users', JSON.stringify(users));
-
-    login({
-      username,
-      email,
     });
 
-    navigate('/dashboard');
-  };
+    localStorage.setItem(
+      "users",
+      JSON.stringify(users)
+    );
+
+    navigate("/login");
+  }
 
   return (
     <div className="auth-container">
-      <form className="auth-card" onSubmit={handleSignup}>
-      <div className="logo">💰</div>
 
-<h1>Finance Hub</h1>
+      <div className="auth-card">
 
-<p className="subtitle">
-  Create your free account
-</p>
+        <div className="brand">
 
-        {error && <p className="error">{error}</p>}
+          <div className="logo">💰</div>
 
-        <input
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+          <h1 className="brand-title">
+            Finance Hub
+          </h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <p className="subtitle">
+            Create your free account
+          </p>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
+        <form onSubmit={handleSignup}>
 
-        <button type="submit">Create Account</button>
+          {error && (
+            <p className="error">{error}</p>
+          )}
 
-        <p>
+          <input
+            placeholder="Username"
+            value={username}
+            onChange={(e) =>
+              setUsername(e.target.value)
+            }
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
+          />
+
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) =>
+              setConfirmPassword(e.target.value)
+            }
+          />
+
+          <button type="submit">
+            Create Account
+          </button>
+
+        </form>
+
+        <p className="auth-footer">
+
           Already have an account?
-          <Link to="/login"> Login</Link>
+
+          <Link to="/login">
+            Login
+          </Link>
+
         </p>
-      </form>
+
+      </div>
+
     </div>
   );
 }

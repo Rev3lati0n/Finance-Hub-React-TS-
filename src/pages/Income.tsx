@@ -84,14 +84,15 @@ export default function Income() {
   }
 
   function handleDelete(id: string) {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this income?"
-    );
-
-    if (!confirmed) return;
+    if (
+      !window.confirm(
+        "Are you sure you want to delete this income?"
+      )
+    ) {
+      return;
+    }
 
     deleteIncome(id);
-
     toast.success("Income deleted!");
   }
 
@@ -103,13 +104,16 @@ export default function Income() {
 
   return (
     <Layout>
+
       <h1>💰 Income</h1>
 
       <div className="summary-grid">
+
         <div className="summary-card">
           <h3>Total Income</h3>
           <h2>${totalIncome.toFixed(2)}</h2>
         </div>
+
       </div>
 
       <input
@@ -120,19 +124,16 @@ export default function Income() {
       />
 
       <div className="expense-form">
+
         <input
           placeholder="Description"
           value={description}
-          onChange={(e) =>
-            setDescription(e.target.value)
-          }
+          onChange={(e) => setDescription(e.target.value)}
         />
 
         <select
           value={source}
-          onChange={(e) =>
-            setSource(e.target.value)
-          }
+          onChange={(e) => setSource(e.target.value)}
         >
           <option>Salary</option>
           <option>Business</option>
@@ -146,47 +147,53 @@ export default function Income() {
           type="number"
           placeholder="Amount"
           value={amount}
-          onChange={(e) =>
-            setAmount(e.target.value)
-          }
+          onChange={(e) => setAmount(e.target.value)}
         />
 
         <input
           type="date"
           value={date}
-          onChange={(e) =>
-            setDate(e.target.value)
-          }
+          onChange={(e) => setDate(e.target.value)}
         />
 
         {editingId ? (
           <>
-            <button onClick={handleSubmit}>
+            <button
+              className="primary-btn"
+              onClick={handleSubmit}
+            >
               💾 Save Changes
             </button>
 
             <button
-              className="action-btn"
+              className="edit-btn"
               onClick={clearForm}
             >
               Cancel
             </button>
           </>
         ) : (
-          <button onClick={handleSubmit}>
+          <button
+            className="primary-btn"
+            onClick={handleSubmit}
+          >
             ➕ Add Income
           </button>
         )}
+
       </div>
 
       <div className="expense-table">
+
         <h2>Income History</h2>
 
         {filteredIncome.length === 0 ? (
           <p>No income found.</p>
         ) : (
           <table>
+
             <thead>
+
               <tr>
                 <th>Description</th>
                 <th>Source</th>
@@ -195,22 +202,27 @@ export default function Income() {
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
+
             </thead>
 
             <tbody>
+
               {filteredIncome.map((income) => (
+
                 <tr key={income.id}>
+
                   <td>{income.description}</td>
+
                   <td>{income.source}</td>
+
                   <td>{income.date}</td>
+
                   <td>${income.amount.toFixed(2)}</td>
 
                   <td>
                     <button
                       className="action-btn edit-btn"
-                      onClick={() =>
-                        startEditing(income)
-                      }
+                      onClick={() => startEditing(income)}
                     >
                       ✏️ Edit
                     </button>
@@ -226,12 +238,18 @@ export default function Income() {
                       🗑 Delete
                     </button>
                   </td>
+
                 </tr>
+
               ))}
+
             </tbody>
+
           </table>
         )}
+
       </div>
+
     </Layout>
   );
 }
